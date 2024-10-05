@@ -19,6 +19,21 @@ This project contains two Python scripts designed to help Beat Saber players man
 pip install Pillow requests
 ```
 
+## Important: Song Folder Name Format
+
+For these scripts to work correctly, your Beat Saber custom song folders must follow this naming convention:
+
+```
+<song_id> (<song_name> - <artist_name>)
+```
+
+For example:
+```
+1a336 (Green Apple Paradise - Kelvin Chuang)
+```
+
+The `<song_id>` at the beginning is crucial for the scripts to fetch the correct song hash from the BeatSaver API.
+
 ## Beat Saber Playlist Generator
 
 This script creates a playlist file (.bplist) for Beat Saber, including songs with a specified difficulty level and generating a custom playlist image.

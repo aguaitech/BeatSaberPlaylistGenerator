@@ -115,7 +115,7 @@ def generate_playlist(folder_path, playlist_title, difficulty):
                     info_data = json.load(f)
                 
                 # Check if the song has the specified difficulty
-                has_difficulty = any(diff['_difficulty'] == difficulty for diff in info_data['_difficultyBeatmapSets'][0]['_difficultyBeatmaps'])
+                has_difficulty = any(difficulty == '*' or diff['_difficulty'] == difficulty for diff in info_data['_difficultyBeatmapSets'][0]['_difficultyBeatmaps'])
                 
                 if has_difficulty:
                     song_id = extract_song_id(song_folder)
@@ -152,7 +152,7 @@ if __name__ == "__main__":
         playlist_title = input("Playlist title is required. Please enter a title: ").strip()
     
     output_file = get_input_with_default("Enter the output file name for the playlist", f"{playlist_title}.bplist")
-    difficulty = get_input_with_default("Enter the difficulty level", "Normal")
+    difficulty = get_input_with_default("Enter the difficulty level (e.g., Easy, Normal, Hard), or press Enter for all difficulties.", "*")
 
     playlist = generate_playlist(folder_path, playlist_title, difficulty)
     save_playlist(playlist, output_file)
